@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>TradeView Pro Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="TradeView Pro" />
+  <meta property="og:description" content="Обучение, сигналы, рефералы и фонд — всё в одном Telegram Web Bot!" />
+  <meta property="og:image" content="icon.png" />
+  <link rel="stylesheet" href="style.css">
+  <script src="Build/UnityLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+<div id="unityContainer" style="width: 100vw; height: 100vh;"></div>
+
+<script>
+  const unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build.json", {
+    onProgress: UnityProgress
+  });
+
+  // Пример взаимодействия Telegram ↔ Unity
+  function sendTelegramID(id) {
+    unityInstance.SendMessage("AppEntry", "OnTelegramLogin", id);
+  }
+
+  // Пример вызова Chart.js из Unity
+  function renderChart(dataJson) {
+    const data = JSON.parse(dataJson);
+    // сюда можешь встроить кастомный рендеринг графика
+  }
+</script>
+</body>
+
+</html>
